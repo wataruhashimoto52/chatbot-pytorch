@@ -12,7 +12,7 @@ def japanese_tokenizer(sentence):
 
     result = tagger.parse(sentence)
     return result.split()
-
+"""
 class Lang:
     def __init__(self, name):
         self.name = name
@@ -35,7 +35,7 @@ class Lang:
         for word in japanese_tokenizer(sentence):
             self.addWord(word)
 
-
+"""
 
 
 def indexesFromSentence(vocab, sentence):
