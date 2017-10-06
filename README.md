@@ -27,6 +27,10 @@ $ pip3 install torchvision
 
 ## Reference
 
+* https://arxiv.org/abs/1506.05869  
+* http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html   
+* https://github.com/jinfagang/pytorch_chatbot  
+
 ## Author
 
 [wataruhashimoto52] https://github.com/wataruhashimoto52 
