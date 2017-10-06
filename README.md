@@ -11,7 +11,10 @@ This is a sequence-to-sequence conversationa model with attention mechanism impl
 ## Contents
 
 ## Requirements
-
+* Ubuntu 16.04  
+* Anaconda3-4.2.0  
+* tweepy  
+* python-dotenv  
 
 ## Install
 Before running these scripts, making a local python client using `pyenv` is reccomended, like:
