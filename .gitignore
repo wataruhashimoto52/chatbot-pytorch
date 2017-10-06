@@ -1,4 +1,5 @@
 .DS_Store
+.env
 .vscode/
 __pycache__/
 attention_seq2seq.py
