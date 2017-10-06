@@ -10,8 +10,11 @@ This is a sequence-to-sequence conversationa model with attention mechanism impl
 
 ## Contents
 
-## Requirements
+## Machine
 * Ubuntu 16.04  
+* GeForce GTX 1070  
+
+## Requirements
 * Anaconda3-4.2.0  
 * tweepy  
 * python-dotenv  
