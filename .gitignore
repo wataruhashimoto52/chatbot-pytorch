@@ -1,0 +1,10 @@
+.DS_Store
+.vscode/
+__pycache__/
+attention_seq2seq.py
+data/
+data_processor.py
+dec_vocab.pickle
+dec_vocab_mini.pickle
+enc_vocab.pickle
+enc_vocab_mini.pickle
