@@ -12,7 +12,7 @@ This is a sequence-to-sequence conversationa model with attention mechanism impl
 
 ## Machine
 * Ubuntu 16.04  
-* GeForce GTX 1070  
+* GeForce GTX 1070
 
 ## Requirements
 * Anaconda3-4.2.0  
@@ -20,15 +20,10 @@ This is a sequence-to-sequence conversationa model with attention mechanism impl
 * python-dotenv  
 
 ## Install
-Before running these scripts, making a local python client using `pyenv` is reccomended, like:
+Please reference: http://pytorch.org/  
 
 ```
-$ pyenv install 3.5.0
-$ pyenv virtualenv 3.5.0 example
-$ pyenv shell example
-# if OS X, python = 3.5, from pip and No CUDA
-$ pip3 install http://download.pytorch.org/whl/torch-0.2.0.post3-cp35-cp35m-macosx_10_7_x86_64.whl   
-$ pip3 install torchvision 
+$ conda install pytorch torchvision -c soumith
 ```
 
 ## How to use?
