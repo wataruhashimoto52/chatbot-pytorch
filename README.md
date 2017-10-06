@@ -3,7 +3,7 @@
 ## Description
 This is a sequence-to-sequence conversationa model with attention mechanism implemented by Pytorch. This model is optimized for Japanese. You may replace existing tokenizer with for your language. This implementation is based on official Pytorch Tutorials http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html .
 
-## Deference
+## Difference
 
 
 ## Contents
