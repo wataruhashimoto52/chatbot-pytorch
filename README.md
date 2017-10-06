@@ -4,6 +4,18 @@
 
 ## Contents
 
+
+## Install
+Before running these scripts, making a local python client using `pyenv` is reccomended, like:
+
+```
+$ pyenv install 3.5.0
+$ pyenv virtualenv 3.5.0 example
+$ pyenv shell example
+$ pip3 install http://download.pytorch.org/whl/torch-0.2.0.post3-cp35-cp35m-macosx_10_7_x86_64.whl   
+$ pip3 install torchvision 
+```
+
 ## How to use?
 
 ## Results
