@@ -28,7 +28,7 @@ def timeSince(since, percent):
     s = now - since
     es = s/ (percent)
     rs = es - s
-    return "{0} ( - {1})".format(asMinutes(s), asMinutes(rs))
+    return "%s ( - %s)" % (asMinutes(s), asMinutes(rs))
 
 def showPlot(points):
     plt.figure()
