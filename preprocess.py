@@ -38,6 +38,10 @@ class Lang:
             self.addWord(word)
 
 def readText(lang1, lang2, reverse = False):
+    """
+    Get Lang object and pairs
+    """
+
     print("Reading lines...")
 
     # read the file and split into lines
@@ -75,6 +79,10 @@ def variableFromSentence(lang, sentence):
         return result
 
 def variablesFromPair(input_lang, output_lang, pair):
+    """
+    Convert sequence to variable
+    """
+    
     input_variable = variableFromSentence(input_lang, pair[0])
     target_variable = variableFromSentence(output_lang, pair[1])
     return (input_variable, target_variable)
