@@ -62,7 +62,7 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
 def trainIters(pairs, input_lang, output_lang, encoder, decoder,
                 n_iters, print_every = 1000, plot_every = 100, 
-                save_every = 5000, eval_every = 5000, learning_rate = 1e-3):
+                save_every = 5000, eval_every = 5000, learning_rate = 0.01):
     start = time.time()
     plot_losses = []
     print_loss_total = 0
