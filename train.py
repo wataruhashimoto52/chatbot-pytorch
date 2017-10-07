@@ -50,7 +50,7 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
         decoder_input = Variable(torch.LongTensor([[ni]]))
         decoder_input = decoder_input.cuda() if use_cuda else decoder_input
 
-        loss += criterion(decoder_output, target_variable[di])
+        loss += criterion(decoder_output[0], target_variable[di])
         if ni == EOS_TOKEN:
             break
     loss.backward()
@@ -62,7 +62,7 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
 def trainIters(pairs, input_lang, output_lang, encoder, decoder,
                 n_iters, print_every = 1000, plot_every = 100, 
-                save_every = 5000, eval_every = 5000, learning_rate = 0.01):
+                save_every = 5000, eval_every = 5000, learning_rate = 1e-3):
     start = time.time()
     plot_losses = []
     print_loss_total = 0
