@@ -24,6 +24,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 
 ## Requirements
 * Anaconda3-4.2.0  
+* pytorch
 * tweepy  
 * python-dotenv  
 * MeCab
@@ -49,7 +50,7 @@ $ mv source.txt target.txt data/
 3. Let's train.
 ```
 $ python train.py   
-```
+```  
 
 ## Results
 
