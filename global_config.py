@@ -15,7 +15,7 @@ SOURCE_PATH = "data/source.txt"
 TARGET_PATH = "data/target.txt"
 PAIRS_PATH = "data/pairs.txt"
 MODEL_PREFIX = 'attn_seq2seq_conversation'
-CHECKPOINT_DIR = "./checkpoints"
+CHECKPOINT_DIR = "./checkpoints/"
 use_cuda = torch.cuda.is_available()
 
 def asMinutes(s):
