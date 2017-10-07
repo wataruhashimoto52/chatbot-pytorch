@@ -6,7 +6,19 @@ import glob
 import numpy as np  
 
 def load_previous_model(encoder, decoder, checkpoint_dir, model_prefix):
-    pass
+    f_list = glob.glob(os.path.join(checkpoint_dir, model_prefix) + '-*.pth')
+    start_epoch = 1
+    if len(f_list) >= 1:
+        epoch_list = [int(i.split('-')[-1].split('.')[0]) for i in f_list]
+        last_checkpoint = f_list[np.argmax(epoch_list)]
+        if os.path.exists(last_checkpoint):
+            print('load from {}'.format(last_checkpoint))
+            model_state_dict = torch.load(last_checkpoint, map_location=lambda storage, loc: storage)
+            encoder.load_state_dict(model_state_dict['encoder'])
+            decoder.load_state_dict(model_state_dict['decoder'])
+            start_epoch = np.max(epoch_list)
+    return encoder, decoder, start_epoch
+
 
 def save_model(encoder, decoder, checkpoint_dir, model_prefix, epoch, max_keep = 5):
     if not os.path.exists(checkpoint_dir):
