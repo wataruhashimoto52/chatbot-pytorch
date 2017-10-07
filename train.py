@@ -50,7 +50,7 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
         decoder_input = Variable(torch.LongTensor([[ni]]))
         decoder_input = decoder_input.cuda() if use_cuda else decoder_input
 
-        loss += criterion(decoder_output[0], target_variable[di])
+        loss += criterion(decoder_output, target_variable[di])
         if ni == EOS_TOKEN:
             break
     loss.backward()
@@ -146,6 +146,7 @@ def evaluate(input_lang, output_lang,
         
         decoder_input = Variable(torch.LongTensor([[ni]]))
         decoder_input = decoder_input.cuda() if use_cuda else decoder_input
+
     return decoded_words, decoder_attentions[:di + 1]
 
 def evaluate_randomly(pairs, input_lang, output_lang,
