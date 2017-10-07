@@ -25,7 +25,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * Ubuntu 16.04  
 * GeForce GTX 1070
 * Memory 16GB
-* CPU Core i5
+* CPU Corei5
 
 ## Requirements
 * Anaconda3-4.2.0 (Python 3.5)
@@ -42,22 +42,35 @@ $ conda install pytorch torchvision -c soumith
 ```
 
 ## How to use?
-1. Collect dialogue data. If you think enough data (10MB~) gathered, do Ctrl-C.
- ```   
+1. Registration to the Twitter API(https://apps.twitter.com).
+
+2. Extraction of consumerkey, consumer secret key, access token key and access token secret key. Then, please make `.env` file and write consumerkey, consumer secret key, access token key and access token secret key.
+
+`$ vi .env` 
+
+```
+CONSUMER_KEY=...
+CONSUMER_SECRET=...
+ACCESS_TOKEN=...
+ACCESS_TOKEN_SECRET=...
+```
+
+3. Collect dialogue data. If you think enough data (10MB~) gathered, do Ctrl-C.
+```   
 $ python collect_replies.py   
 ```   
 
-2. Move collected data to data directory.
+4. Move collected data to data directory.
 ```
 $ mv source.txt target.txt data/
 ```
 
-3. Let's train.
+5. Let's train the conversational model. 
 ```
 $ python train.py   
 ```  
 
-4. Let's communicate.
+6. Let's talk with him!
 ```
 $ python load_saved_model.py
 ```
