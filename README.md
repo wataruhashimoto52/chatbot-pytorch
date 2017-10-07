@@ -8,6 +8,9 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 
 * Change of preprocess scheme accompanying it  
 
+* You can load saved latest model and talk with him.
+
+
 ## Contents  
 * `settings.py` - Extract environment variables to use tweepy
 * `collect_replies.py` - Obtain dialogue data  
@@ -16,7 +19,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * `global_config.py` - Common variables and functions
 * `train.py` - Script to run
 * `loader.py` - Function to load and save model
-* `load_saved_model.py` - Load latest saved model and communicate
+* `load_saved_model.py` - Load latest saved model and talk with him
 
 ## Machine
 * Ubuntu 16.04  
