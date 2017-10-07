@@ -73,14 +73,14 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
     return loss.data[0] / target_length
 
-def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, learning_rate = 0.01):
+def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, learning_rate = 1e-4):
     start = time.time()
     plot_losses = []
     print_loss_total = 0
     plot_loss_total = 0
 
-    encoder_optimizer = optim.SGD(encoder.parameters(), lr = learning_rate)
-    decoder_optimizer = optim.SGD(decoder.parameters(), lr = learning_rate)
+    encoder_optimizer = optim.Adam(encoder.parameters(), lr = learning_rate)
+    decoder_optimizer = optim.Adam(decoder.parameters(), lr = learning_rate)
 
     source_file = codecs.open(SOURCE_PATH, 'r', 'utf-8')
     target_file = codecs.open(TARGET_PATH, 'r', 'utf-8')
