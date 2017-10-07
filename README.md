@@ -4,7 +4,7 @@
 This is a sequence-to-sequence conversational model with attention mechanism implemented by Pytorch. This model is optimized for Japanese. You may replace existing tokenizer with for your language. This implementation is based on official Pytorch Tutorials http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html .
 
 ## Difference
-* Addition of a script (`collect_replies.py`) to collect dialogue data  
+* Addition of scripts (`collect_replies.py` & `settings.py`) to collect dialogue data  
 
 * Change of preprocess scheme accompanying it  
 
@@ -26,6 +26,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * Anaconda3-4.2.0  
 * tweepy  
 * python-dotenv  
+* MeCab
 
 ## Install
 Please reference: http://pytorch.org/  
@@ -35,6 +36,20 @@ $ conda install pytorch torchvision -c soumith
 ```
 
 ## How to use?
+1. Collect dialogue data.
+```   
+$ python collect_replies.py   
+```   
+
+2. Move collected data to data directory.
+```
+$ mv source.txt target.txt data/
+```
+
+3. Let's train.
+```
+$ python train.py   
+```
 
 ## Results
 
