@@ -8,11 +8,16 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 
 * Change of preprocess scheme accompanying it  
 
-## Contents
+## Contents  
+* `settings.py` - Extract environment variables  
+* `collect_replies.py` - Obtain dialogue data  
+* `preprocess.py` - Preprocess of dialogue data obtained  
+
 
 ## Machine
 * Ubuntu 16.04  
 * GeForce GTX 1070
+* Memory 16GB
 
 ## Requirements
 * Anaconda3-4.2.0  
