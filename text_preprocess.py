@@ -12,6 +12,7 @@ tagger = MeCab.Tagger("-Owakati")
 
 SOURCE_PATH = "data/source.txt"
 TARGET_PATH = "data/target.txt"
+PAIRS_PATH = "data/pairs.txt"
 _WORD_SPLIT = re.compile("([.,!/?\":;)(])")
 
 def japanese_tokenizer(sentence):
@@ -27,6 +28,10 @@ def basic_tokenizer(sentence):
     return [w for w in words]
 
 if __name__ == "__main__":
+    
+    with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
+        open(PAIRS_PATH, "w") as p:
+        p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
     
     # tokenize and idnize
     enc_vocab = {'SOS':0, 'EOS':1}
