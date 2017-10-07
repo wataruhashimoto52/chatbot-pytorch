@@ -10,7 +10,7 @@ import numpy as np
 
 SOS_TOKEN = 0
 EOS_TOKEN = 1
-MAX_LENGTH = 100
+MAX_LENGTH = 50
 MODEL_PREFIX = 'attn_seq2seq_conversation'
 CHECKPOINT_DIR = "./checkpoints"
 use_cuda = torch.cuda.is_available()
