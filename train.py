@@ -168,17 +168,18 @@ def communication(encoder, decoder):
         sys.stdout.flush()
         line = sys.stdin.readline()
 
-# train & evaluate
-hidden_size = 256
-input_lang, output_lang, pairs = prepareData('source', 'target', reverse = True)
-encoder1 = EncoderRNN(input_lang.n_words, hidden_size)
-attn_decoder1 = AttentionDecoderRNN(hidden_size, output_lang.n_words,
-     n_layers = 1, dropout_p = 0.1)
+if __name__ == "__main__":
+    
+    hidden_size = 256
+    input_lang, output_lang, pairs = prepareData('source', 'target', reverse = True)
+    encoder1 = EncoderRNN(input_lang.n_words, hidden_size)
+    attn_decoder1 = AttentionDecoderRNN(hidden_size, output_lang.n_words,
+        n_layers = 1, dropout_p = 0.1)
 
-if use_cuda:
-    encoder1 = encoder1.cuda()
-    attn_decoder1 = attn_decoder1.cuda()
+    if use_cuda:
+        encoder1 = encoder1.cuda()
+        attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(pairs, encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
+    trainIters(pairs, encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
 
-communication(encoder1, attn_decoder1)
+    communication(encoder1, attn_decoder1)
