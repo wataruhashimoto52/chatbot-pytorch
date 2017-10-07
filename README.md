@@ -9,7 +9,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * Change of preprocess scheme accompanying it  
 
 ## Contents  
-* `settings.py` - Extract environment variables  
+* `settings.py` - Extract environment variables to use tweepy
 * `collect_replies.py` - Obtain dialogue data  
 * `preprocess.py` - Preprocess of dialogue data obtained  
 * `model.py` - Encoder and Decoder with Attention
