@@ -4,7 +4,7 @@
 This is a sequence-to-sequence conversational model with attention mechanism implemented by Pytorch. This model is optimized for Japanese. You may replace existing tokenizer with for your language. This implementation is based on official Pytorch Tutorials http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html .
 
 ## Difference
-* Addition of a script (`collect_replies.py`) to collect conversation data  
+* Addition of a script (`collect_replies.py`) to collect dialogue data  
 
 * Change of preprocess scheme accompanying it  
 
@@ -12,10 +12,10 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * `settings.py` - Extract environment variables  
 * `collect_replies.py` - Obtain dialogue data  
 * `preprocess.py` - Preprocess of dialogue data obtained  
-* `model.py`
-* `global_config.py`
-* `train.py`
-* `loader.py`
+* `model.py` - Encoder and Decoder with Attention
+* `global_config.py` - Common variables and functions
+* `train.py` - Script to run
+* `loader.py` - Load previous model and save model
 
 ## Machine
 * Ubuntu 16.04  
