@@ -39,3 +39,4 @@ def save_model(encoder, decoder, checkpoint_dir, model_prefix, epoch, max_keep =
         'decoder': decoder.state_dict()
     }
     torch.save(model_dict, file_path)
+    print("Saved model.")
