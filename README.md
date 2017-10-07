@@ -25,9 +25,10 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * Ubuntu 16.04  
 * GeForce GTX 1070
 * Memory 16GB
+* CPU Core i5
 
 ## Requirements
-* Anaconda3-4.2.0  
+* Anaconda3-4.2.0 (Python 3.5)
 * pytorch
 * tweepy  
 * python-dotenv  
