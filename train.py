@@ -15,9 +15,7 @@ from torch.autograd import Variable
 from torch import optim  
 import torch.nn.functional as F  
 
-SOURCE_PATH = "data/source.txt"
-TARGET_PATH = "data/target.txt"
-
+"""
 # set data
 with open("enc_vocab.pickle", "rb") as f:
     enc_vocab = pickle.load(f)
@@ -26,6 +24,7 @@ with open("enc_vocab.pickle", "rb") as f:
 with open("dec_vocab.pickle", "rb") as d:
     dec_vocab = pickle.load(d)
     dec_index2vocab = {v:k for k, v in dec_vocab.items()}
+"""
 
 def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
             decoder_optimizer, criterion, max_length = MAX_LENGTH):
