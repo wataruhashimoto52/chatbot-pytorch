@@ -53,6 +53,11 @@ $ mv source.txt target.txt data/
 $ python train.py   
 ```  
 
+4. Let's communicate.
+```
+$ python load_saved_model.py
+```
+
 ## Results
 
 ## Reference
