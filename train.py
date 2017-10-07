@@ -134,6 +134,7 @@ def evaluate(input_lang, output_lang,
         decoder_output, decoder_hidden, decoder_attention = decoder(
                 decoder_input, decoder_hidden, encoder_output, encoder_outputs
             )
+        decoder_attentions[di] = decoder_attention.data
         topv, topi = decoder_output.data.topk(1)
         ni = topi[0][0]
 
