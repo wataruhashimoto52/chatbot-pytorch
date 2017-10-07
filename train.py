@@ -183,7 +183,7 @@ def communication(encoder, decoder):
 # train & evaluate
 hidden_size = 256
 encoder1 = EncoderRNN(len(enc_vocab), hidden_size)
-attn_decoder1 = AttentionDecoderRNN(hidden_size, len(dec_vocab), 1, dropout_p = 0.1)
+attn_decoder1 = AttentionDecoderRNN(hidden_size, len(dec_vocab), n_layers = 1, dropout_p = 0.1)
 
 if use_cuda:
     encoder1 = encoder1.cuda()
