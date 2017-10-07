@@ -12,7 +12,10 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * `settings.py` - Extract environment variables  
 * `collect_replies.py` - Obtain dialogue data  
 * `preprocess.py` - Preprocess of dialogue data obtained  
-
+* `model.py`
+* `global_config.py`
+* `train.py`
+* `loader.py`
 
 ## Machine
 * Ubuntu 16.04  
