@@ -73,9 +73,10 @@ def variableFromSentence(lang, sentence):
     else:
         return result
 
-def variablesFromPair(pair):
-    pass
-    
+def variablesFromPair(input_lang, output_lang, pair):
+    input_variable = variableFromSentence(input_lang, pair[0])
+    target_variable = variableFromSentence(output_lang, pair[1])
+    return (input_variable, target_variable)
 
 def prepareData(lang1, lang2, reverse  = False):
     input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
