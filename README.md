@@ -17,7 +17,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * `preprocess.py` - Preprocess of dialogue data obtained  
 * `model.py` - Encoder and Decoder with Attention
 * `global_config.py` - Common variables and functions
-* `train.py` - Script to run
+* `train.py` - Script to train
 * `loader.py` - Function to load and save model
 * `load_saved_model.py` - Load latest saved model and talk with him
 
