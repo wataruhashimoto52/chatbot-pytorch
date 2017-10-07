@@ -39,10 +39,9 @@ def readText(lang1, lang2, reverse = False):
     print("Reading lines...")
 
     # read the file and split into lines
-    lines = open(PAIRS_PATH, 'r', encoding="utf-8").\
-                read().strip().split("\n")
+    lines = open(PAIRS_PATH, 'r', encoding="utf-8").readlines()
     
-    pairs = [[s for s in l.split('/t')] for l in lines]
+    pairs = [[s for s in l.split('\t')] for l in lines]
 
     if reverse:
         pairs = [list(reversed(p)) for p in pairs]
@@ -78,9 +77,23 @@ def variablesFromPair(input_lang, output_lang, pair):
     target_variable = variableFromSentence(output_lang, pair[1])
     return (input_variable, target_variable)
 
+def filterPair(p):
+    return len(japanese_tokenizer(p[0])) < MAX_LENGTH and \
+            len(japanese_tokenizer(p[1])) < MAX_LENGTH
+
+def filterPairs(pairs):
+    return [pair for pair in pairs if filterPair(pair)]
+
 def prepareData(lang1, lang2, reverse  = False):
+    print("Making pairs text...")
+    with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
+        open(PAIRS_PATH, "w") as p:
+        p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
+    print("Make pairs.txt .")
     input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
     print("Read %s sentence pairs" % len(pairs))
+    pairs = filterPairs(pairs)
+    print("Trimmed to %s sentence pairs"% len(pairs))
     print("Counting words...")
     for pair in pairs:
         input_lang.addSentence(pair[0])
