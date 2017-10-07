@@ -37,8 +37,8 @@ $ conda install pytorch torchvision -c soumith
 ```
 
 ## How to use?
-1. Collect dialogue data.
-```   
+1. Collect dialogue data. If you think enough data (10MB~), do Ctrl-C.
+ ```   
 $ python collect_replies.py   
 ```   
 
