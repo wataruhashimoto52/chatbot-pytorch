@@ -90,17 +90,23 @@ def prepareData(lang1, lang2, reverse  = False):
     print("Making pairs text...")
     with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
         open(PAIRS_PATH, "w") as p:
+
         p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
+
     print("Make pairs.txt .")
     input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
+
     print("Read %s sentence pairs" % len(pairs))
     pairs = filterPairs(pairs)
     print("Trimmed to %s sentence pairs"% len(pairs))
+
     print("Counting words...")
     for pair in pairs:
         input_lang.addSentence(pair[0])
         output_lang.addSentence(pair[1])
+        
     print("Counted words:")
     print(input_lang.name, input_lang.n_words)
     print(output_lang.name, output_lang.n_words)
+
     return input_lang, output_lang, pairs
