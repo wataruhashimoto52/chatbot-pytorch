@@ -9,3 +9,6 @@ dec_vocab.pickle
 dec_vocab_mini.pickle
 enc_vocab.pickle
 enc_vocab_mini.pickle
+make_minidata.py
+text_preprocess.py
+tmp.py
