@@ -11,7 +11,7 @@ def japanese_tokenizer(sentence):
     assert type(sentence) is str
 
     result = tagger.parse(sentence)
-    return result.split()
+    return result.split(' ')
 
 class Lang:
     def __init__(self, name):
