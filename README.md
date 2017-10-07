@@ -44,7 +44,7 @@ $ conda install pytorch torchvision -c soumith
 ## How to use?
 1. Registration to the Twitter API(https://apps.twitter.com).
 
-2. Extraction of consumerkey, consumer secret key, access token key and access token secret key. Then, please make `.env` file and write consumerkey, consumer secret key, access token key and access token secret key.
+2. Extraction of consumer key, consumer secret key, access token key and access token secret key. Then, please make `.env` file and write consumerkey, consumer secret key, access token key and access token secret key.
 
 `$ vi .env` 
 
