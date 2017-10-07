@@ -80,10 +80,17 @@ def variablesFromPair(input_lang, output_lang, pair):
     return (input_variable, target_variable)
 
 def filterPair(p):
+    """
+    Trimming sentence pairs. 
+    """
+
     return len(japanese_tokenizer(p[0])) < MAX_LENGTH and \
             len(japanese_tokenizer(p[1])) < MAX_LENGTH
 
 def filterPairs(pairs):
+    """
+    Get trimmed pairs.  
+    """
     return [pair for pair in pairs if filterPair(pair)]
 
 def prepareData(lang1, lang2, reverse  = False):
@@ -104,7 +111,7 @@ def prepareData(lang1, lang2, reverse  = False):
     for pair in pairs:
         input_lang.addSentence(pair[0])
         output_lang.addSentence(pair[1])
-        
+
     print("Counted words:")
     print(input_lang.name, input_lang.n_words)
     print(output_lang.name, output_lang.n_words)
