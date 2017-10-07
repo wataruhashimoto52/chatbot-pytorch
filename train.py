@@ -160,12 +160,12 @@ def evaluate_randomly(pairs, input_lang, output_lang,
         print("<", output_sentence)
         print('')
 
-def communication(input_lang, encoder, decoder):
+def communication(input_lang, output_lang, encoder, decoder):
     sys.stdout.write("> ")
     sys.stdout.flush()
     line = sys.stdin.readline()
     while line:
-        output_words, _ = evaluate(input_lang, encoder, decoder, line)
+        output_words, _ = evaluate(input_lang, output_lang, encoder, decoder, line)
         output_sentence = ''.join(output_words)
         output_sentence = output_sentence.replace("\n", "").replace("EOS", "")
         print(output_sentence)
@@ -188,4 +188,4 @@ if __name__ == "__main__":
     trainIters(pairs, input_lang, output_lang,
                 encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
 
-    communication(encoder1, attn_decoder1)
+    communication(input_lang, output_lang, encoder1, attn_decoder1)
