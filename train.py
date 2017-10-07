@@ -62,7 +62,7 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
     return loss.data[0] / target_length
 
-def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
+def trainIters(pairs, encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
                 save_every = 5000, eval_every = 5000, learning_rate = 1e-3):
     start = time.time()
     plot_losses = []
@@ -104,7 +104,7 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100,
             save_model(encoder, decoder, CHECKPOINT_DIR, MODEL_PREFIX, iter)
 
         if iter % eval_every == 0:
-            
+            evaluate_randomly(pairs, encoder, decoder, n = 1)
     
     showPlot(plot_losses)
 
@@ -181,6 +181,6 @@ if use_cuda:
     encoder1 = encoder1.cuda()
     attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(encoder1, attn_decoder1, 750000, 5000, 100, 5000, 5000)
+trainIters(pairs, encoder1, attn_decoder1, 750000, 5000, 100, 5000, 5000)
 
 communication(encoder1, attn_decoder1)
