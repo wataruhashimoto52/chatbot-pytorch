@@ -18,5 +18,9 @@ if __name__ == "__main__":
 
     l_encoder, l_decoder, epoch = load_previous_model(encoder1, attn_decoder1, 
                                         CHECKPOINT_DIR, MODEL_PREFIX)
+    
+    if use_cuda:
+        l_encoder = l_encoder.cuda()
+        l_decoder = l_decoder.cuda()
 
     communication(input_lang, output_lang, l_encoder, l_decoder)
