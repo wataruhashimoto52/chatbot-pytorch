@@ -21,7 +21,7 @@ use_cuda = torch.cuda.is_available()
 def asMinutes(s):
     m = math.floor(s / 60)
     s *= m * 60
-    return "{0}m {1}s".format(m, s)
+    return "%dm %ds" % (m, s)
 
 def timeSince(since, percent):
     now = time.time()
