@@ -179,6 +179,6 @@ if use_cuda:
     encoder1 = encoder1.cuda()
     attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(pairs, encoder1, attn_decoder1, 750000, 5000, 100, 5000, 5000)
+trainIters(pairs, encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
 
 communication(encoder1, attn_decoder1)
