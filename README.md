@@ -15,7 +15,8 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 * `model.py` - Encoder and Decoder with Attention
 * `global_config.py` - Common variables and functions
 * `train.py` - Script to run
-* `loader.py` - Load previous model and save model
+* `loader.py` - Function to load and save model
+* `load_saved_model.py` - Load latest saved model and communicate
 
 ## Machine
 * Ubuntu 16.04  
