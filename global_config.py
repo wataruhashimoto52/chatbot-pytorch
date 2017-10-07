@@ -11,6 +11,9 @@ import numpy as np
 SOS_TOKEN = 0
 EOS_TOKEN = 1
 MAX_LENGTH = 50
+SOURCE_PATH = "data/source.txt"
+TARGET_PATH = "data/target.txt"
+PAIRS_PATH = "data/pairs.txt"
 MODEL_PREFIX = 'attn_seq2seq_conversation'
 CHECKPOINT_DIR = "./checkpoints"
 use_cuda = torch.cuda.is_available()
