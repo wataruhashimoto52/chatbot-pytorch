@@ -147,7 +147,7 @@ def evaluate(encoder, decoder, sentence, max_length = MAX_LENGTH):
     return decoded_words, decoder_attentions[:di + 1]
 
 def evaluate_randomly(pairs, encoder, decoder, n = 10):
-    if i in range(n):
+    for i in range(n):
         pair = random.choice(pairs)
         print('>', pair[0])
         print("=", pair[1])
