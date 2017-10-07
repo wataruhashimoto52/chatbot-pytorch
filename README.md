@@ -8,7 +8,7 @@ This is a sequence-to-sequence conversational model with attention mechanism imp
 
 * Change of preprocess scheme accompanying it  
 
-* You can load saved latest model and talk with him.
+* You can load saved latest model and talk with him (`load_saved_model.py`).
 
 
 ## Contents  
