@@ -60,7 +60,8 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
     return loss.data[0] / target_length
 
-def trainIters(pairs, encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
+def trainIters(pairs, input_lang, output_lang, encoder, decoder,
+                n_iters, print_every = 1000, plot_every = 100, 
                 save_every = 5000, eval_every = 5000, learning_rate = 1e-3):
     start = time.time()
     plot_losses = []
@@ -102,11 +103,13 @@ def trainIters(pairs, encoder, decoder, n_iters, print_every = 1000, plot_every 
             save_model(encoder, decoder, CHECKPOINT_DIR, MODEL_PREFIX, iter)
 
         if iter % eval_every == 0:
-            evaluate_randomly(pairs, encoder, decoder, n = 1)
+            evaluate_randomly(pairs, input_lang, output_lang, encoder,
+                                decoder, n = 1)
     
     showPlot(plot_losses)
 
-def evaluate(encoder, decoder, sentence, max_length = MAX_LENGTH):
+def evaluate(input_lang, output_lang, 
+            encoder, decoder, sentence, max_length = MAX_LENGTH):
     source_variable = variableFromSentence(input_lang, sentence)
     source_length = source_variable.size()[0]
     encoder_hidden = encoder.initHidden()
@@ -144,23 +147,25 @@ def evaluate(encoder, decoder, sentence, max_length = MAX_LENGTH):
         decoder_input = decoder_input.cuda() if use_cuda else decoder_input
     return decoded_words, decoder_attentions[:di + 1]
 
-def evaluate_randomly(pairs, encoder, decoder, n = 10):
+def evaluate_randomly(pairs, input_lang, output_lang,
+                        encoder, decoder, n = 10):
     for i in range(n):
         pair = random.choice(pairs)
         print('>', pair[0])
         print("=", pair[1])
-        output_words, _ = evaluate(encoder, decoder, pair[0])
+        output_words, _ = evaluate(input_lang, output_lang, 
+                                        encoder, decoder, pair[0])
         output_sentence = ''.join(output_words)
         output_sentence = output_sentence.replace("\n", "").replace("EOS", "")
         print("<", output_sentence)
         print('')
 
-def communication(encoder, decoder):
+def communication(input_lang, encoder, decoder):
     sys.stdout.write("> ")
     sys.stdout.flush()
     line = sys.stdin.readline()
     while line:
-        output_words, _ = evaluate(encoder, decoder, line)
+        output_words, _ = evaluate(input_lang, encoder, decoder, line)
         output_sentence = ''.join(output_words)
         output_sentence = output_sentence.replace("\n", "").replace("EOS", "")
         print(output_sentence)
@@ -180,6 +185,7 @@ if __name__ == "__main__":
         encoder1 = encoder1.cuda()
         attn_decoder1 = attn_decoder1.cuda()
 
-    trainIters(pairs, encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
+    trainIters(pairs, input_lang, output_lang,
+                encoder1, attn_decoder1, 200000, 5000, 100, 5000, 5000)
 
     communication(encoder1, attn_decoder1)
