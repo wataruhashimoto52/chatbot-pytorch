@@ -92,7 +92,7 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
     #source_variables = [variableFromSentence(enc_vocab, sentence) for sentence in source_file]
     #target_variables = [variableFromSentence(dec_vocab, sentence) for sentence in target_file]
     """
-    
+
     training_pairs = [variablesFromPair(input_lang, output_lang,
                             random.choice(pairs)) for i in range(n_iters)]
 
@@ -100,10 +100,13 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
 
     for iter in range(1, n_iters + 1):
         
-        num = random.choice(np.arange(len(source_variables)))
-
+        training_pair = training_pairs[iter-1]
+        source_variable = training_pair[0]
+        target_variable = training_pair[1]
+        """
         source_variable = source_variables[num]
         target_variable = target_variables[num]
+        """
 
         loss = train(source_variable, target_variable, encoder, decoder,
                     encoder_optimizer, decoder_optimizer, criterion)
@@ -125,7 +128,7 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
     showPlot(plot_losses)
 
 def evaluate(encoder, decoder, sentence, max_length = MAX_LENGTH):
-    source_variable = variableFromSentence(enc_vocab, sentence)
+    source_variable = variableFromSentence(input_lang, sentence)
     source_length = source_variable.size()[0]
     encoder_hidden = encoder.initHidden()
 
@@ -156,7 +159,7 @@ def evaluate(encoder, decoder, sentence, max_length = MAX_LENGTH):
             decoded_words.append("EOS")
             break
         else:
-            decoded_words.append(dec_index2vocab[ni])
+            decoded_words.append(output_lang.index2word[ni])
         
         decoder_input = Variable(torch.LongTensor([[ni]]))
         decoder_input = decoder_input.cuda() if use_cuda else decoder_input
