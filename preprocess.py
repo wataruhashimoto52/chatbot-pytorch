@@ -55,23 +55,27 @@ def readText(lang1, lang2, reverse = False):
     
     
 
-def indexesFromSentence(vocab, sentence):
+def indexesFromSentence(lang, sentence):
     """
     Get index number list from sentence.  
     """
-    return [vocab[word] for word in japanese_tokenizer(sentence)]
+    return [lang.word2index[word] for word in japanese_tokenizer(sentence)]
 
-def variableFromSentence(vocab, sentence):
+def variableFromSentence(lang, sentence):
     """
     Get torch.LongTensor variable from sentence.
     """
-    indexes = indexesFromSentence(vocab, sentence)
+    indexes = indexesFromSentence(lang, sentence)
     indexes.append(EOS_TOKEN)
     result = Variable(torch.LongTensor(indexes).view(-1, 1))
     if use_cuda:
         return result.cuda()
     else:
         return result
+
+def variablesFromPair(pair):
+    pass
+    
 
 def prepareData(lang1, lang2, reverse  = False):
     input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
