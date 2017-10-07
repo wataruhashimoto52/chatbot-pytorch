@@ -3,6 +3,8 @@
 from global_config import *
 import torch
 from torch.autograd import Variable
+
+# For Japanese tokenizer
 import MeCab
 
 tagger = MeCab.Tagger("-Owakati")
