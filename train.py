@@ -9,6 +9,7 @@ import random
 from model import *
 from global_config import *
 from preprocess import *
+from loader import *
 
 import torch.nn as nn 
 from torch.autograd import Variable 
@@ -61,7 +62,8 @@ def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
 
     return loss.data[0] / target_length
 
-def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, learning_rate = 1e-4):
+def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
+                save_every = 5000,learning_rate = 1e-4):
     start = time.time()
     plot_losses = []
     print_loss_total = 0
@@ -69,29 +71,6 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
 
     encoder_optimizer = optim.Adam(encoder.parameters(), lr = learning_rate)
     decoder_optimizer = optim.Adam(decoder.parameters(), lr = learning_rate)
-    """
-    source_file = codecs.open(SOURCE_PATH, 'r', 'utf-8')
-    target_file = codecs.open(TARGET_PATH, 'r', 'utf-8')
-
-    source_lines = source_file.read().split("\n")
-    target_lines = target_file.read().split("\n")
-
-    text_len = len(source_lines)
-
-    source_variables = []
-    target_variables = []
-    
-    for i in range(text_len):
-        s = variableFromSentence(enc_vocab, source_lines[i])
-        t = variableFromSentence(dec_vocab, target_lines[i])
-
-        if s.size()[0] < MAX_LENGTH and t.size()[0] < MAX_LENGTH:
-            source_variables.append(s)
-            target_variables.append(t)
-        
-    #source_variables = [variableFromSentence(enc_vocab, sentence) for sentence in source_file]
-    #target_variables = [variableFromSentence(dec_vocab, sentence) for sentence in target_file]
-    """
 
     training_pairs = [variablesFromPair(input_lang, output_lang,
                             random.choice(pairs)) for i in range(n_iters)]
@@ -103,10 +82,6 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
         training_pair = training_pairs[iter-1]
         source_variable = training_pair[0]
         target_variable = training_pair[1]
-        """
-        source_variable = source_variables[num]
-        target_variable = target_variables[num]
-        """
 
         loss = train(source_variable, target_variable, encoder, decoder,
                     encoder_optimizer, decoder_optimizer, criterion)
@@ -124,6 +99,9 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
             plot_loss_avg = plot_loss_total / plot_every
             plot_losses.append(plot_loss_avg)
             plot_loss_total = 0
+        
+        if iter % save_every == 0:
+            save_model(encoder, decoder, CHECKPOINT_DIR, MODEL_PREFIX, iter)
     
     showPlot(plot_losses)
 
@@ -187,6 +165,6 @@ if use_cuda:
     encoder1 = encoder1.cuda()
     attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(encoder1, attn_decoder1, 750000, print_every = 100)
+trainIters(encoder1, attn_decoder1, 750000, 5000, 100)
 
 communication(encoder1, attn_decoder1)
