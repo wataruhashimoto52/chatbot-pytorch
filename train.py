@@ -181,6 +181,7 @@ def communication(encoder, decoder):
 
 # train & evaluate
 hidden_size = 256
+input_lang, output_lang, pairs = prepareData('source', 'target', reverse = True)
 encoder1 = EncoderRNN(len(enc_vocab), hidden_size)
 attn_decoder1 = AttentionDecoderRNN(hidden_size, len(dec_vocab), n_layers = 1, dropout_p = 0.1)
 
