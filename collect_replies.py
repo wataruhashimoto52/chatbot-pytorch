@@ -9,6 +9,7 @@ import time
 import traceback
 from settings import *
 
+DATA_DIR = 'data'
 
 class ReplyStreamListener(tweepy.StreamListener):
     def __init__(self, api, target_file, source_file):
@@ -71,6 +72,10 @@ class ReplyStreamListener(tweepy.StreamListener):
 
 
 def main():
+    
+    if os.path.exists(DATA_DIR) is not True:
+        os.makedirs(DATA_DIR)
+
     parser = argparse.ArgumentParser()
     parser.add_argument('source_file', type = argparse.FileType('a'))
     parser.add_argument('target_file', type = argparse.FileType('a'))
