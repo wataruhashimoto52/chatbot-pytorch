@@ -102,13 +102,15 @@ def filterPairs(pairs):
     return [pair for pair in pairs if filterPair(pair)]
 
 def prepareData(lang1, lang2, reverse  = False):
-    print("Making pairs text...")
-    with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
-        open(PAIRS_PATH, "w") as p:
+    if os.path.exists(PAIRS_PATH) is not True:
+        print("Making pairs text...")
+        with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
+            open(PAIRS_PATH, "w") as p:
 
-        p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
+            p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
 
-    print("Make pairs.txt .")
+        print("Make pairs.txt .")
+        
     input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
 
     print("Read %s sentence pairs" % len(pairs))
