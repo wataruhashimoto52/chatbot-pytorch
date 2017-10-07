@@ -15,17 +15,6 @@ from torch.autograd import Variable
 from torch import optim  
 import torch.nn.functional as F  
 
-"""
-# set data
-with open("enc_vocab.pickle", "rb") as f:
-    enc_vocab = pickle.load(f)
-    enc_index2vocab = {v:k for k, v in enc_vocab.items()}
-
-with open("dec_vocab.pickle", "rb") as d:
-    dec_vocab = pickle.load(d)
-    dec_index2vocab = {v:k for k, v in dec_vocab.items()}
-"""
-
 def train(source_variable, target_variable, encoder, decoder, encoder_optimizer,
             decoder_optimizer, criterion, max_length = MAX_LENGTH):
     
@@ -80,7 +69,7 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
 
     encoder_optimizer = optim.Adam(encoder.parameters(), lr = learning_rate)
     decoder_optimizer = optim.Adam(decoder.parameters(), lr = learning_rate)
-
+    """
     source_file = codecs.open(SOURCE_PATH, 'r', 'utf-8')
     target_file = codecs.open(TARGET_PATH, 'r', 'utf-8')
 
@@ -91,16 +80,21 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
 
     source_variables = []
     target_variables = []
-
+    
     for i in range(text_len):
         s = variableFromSentence(enc_vocab, source_lines[i])
         t = variableFromSentence(dec_vocab, target_lines[i])
+
         if s.size()[0] < MAX_LENGTH and t.size()[0] < MAX_LENGTH:
             source_variables.append(s)
             target_variables.append(t)
         
     #source_variables = [variableFromSentence(enc_vocab, sentence) for sentence in source_file]
     #target_variables = [variableFromSentence(dec_vocab, sentence) for sentence in target_file]
+    """
+    
+    training_pairs = [variablesFromPair(input_lang, output_lang,
+                            random.choice(pairs)) for i in range(n_iters)]
 
     criterion = nn.NLLLoss()
 
