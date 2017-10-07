@@ -178,9 +178,13 @@ def communication(encoder, decoder):
 
 # train & evaluate
 hidden_size = 256
+with open(SOURCE_PATH) as s, open(TARGET_PATH) as t, \
+        open(PAIRS_PATH, "w") as p:
+    p.write(''.join([c1.strip("\n") + "\t" + c2 for c1, c2 in zip(s, t)]))
 input_lang, output_lang, pairs = prepareData('source', 'target', reverse = True)
-encoder1 = EncoderRNN(len(enc_vocab), hidden_size)
-attn_decoder1 = AttentionDecoderRNN(hidden_size, len(dec_vocab), n_layers = 1, dropout_p = 0.1)
+encoder1 = EncoderRNN(input_lang.n_words, hidden_size)
+attn_decoder1 = AttentionDecoderRNN(hidden_size, output_lang.n_words,
+             n_layers = 1, dropout_p = 0.1)
 
 if use_cuda:
     encoder1 = encoder1.cuda()
