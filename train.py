@@ -15,15 +15,15 @@ from torch.autograd import Variable
 from torch import optim  
 import torch.nn.functional as F  
 
-SOURCE_PATH = "data/source_mini.txt"
-TARGET_PATH = "data/target_mini.txt"
+SOURCE_PATH = "data/source.txt"
+TARGET_PATH = "data/target.txt"
 
 # set data
-with open("enc_vocab_mini.pickle", "rb") as f:
+with open("enc_vocab.pickle", "rb") as f:
     enc_vocab = pickle.load(f)
     enc_index2vocab = {v:k for k, v in enc_vocab.items()}
 
-with open("dec_vocab_mini.pickle", "rb") as d:
+with open("dec_vocab.pickle", "rb") as d:
     dec_vocab = pickle.load(d)
     dec_index2vocab = {v:k for k, v in dec_vocab.items()}
 
@@ -99,7 +99,6 @@ def trainIters(encoder, decoder, n_iters, print_every = 1000, plot_every = 100, 
         if s.size()[0] < MAX_LENGTH and t.size()[0] < MAX_LENGTH:
             source_variables.append(s)
             target_variables.append(t)
-            
         
     #source_variables = [variableFromSentence(enc_vocab, sentence) for sentence in source_file]
     #target_variables = [variableFromSentence(dec_vocab, sentence) for sentence in target_file]
