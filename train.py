@@ -3,8 +3,6 @@
 import sys
 import time
 import math 
-import pickle
-import codecs
 import random
 from model import *
 from global_config import *
