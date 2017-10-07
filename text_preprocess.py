@@ -10,8 +10,8 @@ import MeCab
 
 tagger = MeCab.Tagger("-Owakati")
 
-SOURCE_PATH = "data/source_mini.txt"
-TARGET_PATH = "data/target_mini.txt"
+SOURCE_PATH = "data/source.txt"
+TARGET_PATH = "data/target.txt"
 _WORD_SPLIT = re.compile("([.,!/?\":;)(])")
 
 def japanese_tokenizer(sentence):
@@ -36,8 +36,6 @@ if __name__ == "__main__":
         for w in enc:
             if w not in enc_vocab:
                 enc_vocab[w] = len(enc_vocab)
-    #enc_vocab['<eos>'] = len(enc_vocab)
-    ev = len(enc_vocab)
 
     dec_vocab = {'SOS':0, 'EOS':1}
     dec_lines = codecs.open(TARGET_PATH, "r", "utf-8")
@@ -46,12 +44,10 @@ if __name__ == "__main__":
         for w in dec:
             if w not in dec_vocab:
                 dec_vocab[w] = len(dec_vocab)
-    #dec_vocab['<eos>'] = len(dec_vocab)
-    dv = len(dec_vocab)
 
     # serialize 
-    with open("enc_vocab_mini.pickle", "wb") as f:
+    with open("enc_vocab.pickle", "wb") as f:
         pickle.dump(enc_vocab, f)
 
-    with open("dec_vocab_mini.pickle", "wb") as d:
+    with open("dec_vocab.pickle", "wb") as d:
         pickle.dump(dec_vocab, d)
