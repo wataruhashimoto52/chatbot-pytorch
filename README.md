@@ -65,7 +65,7 @@ $ python collect_replies.py
 $ mv source.txt target.txt data/
 ```
 
-5. Let's train the conversational model. 
+5. Let's train conversational model. 
 ```
 $ python train.py   
 ```  
@@ -86,6 +86,10 @@ $ python load_saved_model.py
 ## Author
 
 [wataruhashimoto52] https://github.com/wataruhashimoto52 
+
+## Contribute
+
+Welcome submit PR and pull request! 
 
 ## Contact
 If you find an issue or have some questions, please contact Wataru Hashimoto.
