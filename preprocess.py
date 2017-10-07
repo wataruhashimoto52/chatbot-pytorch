@@ -12,7 +12,7 @@ def japanese_tokenizer(sentence):
 
     result = tagger.parse(sentence)
     return result.split()
-"""
+
 class Lang:
     def __init__(self, name):
         self.name = name
@@ -35,8 +35,25 @@ class Lang:
         for word in japanese_tokenizer(sentence):
             self.addWord(word)
 
-"""
+def readText(lang1, lang2, reverse = False):
+    print("Reading lines...")
 
+    # read the file and split into lines
+    lines = open(PAIRS_PATH, 'r', encoding="utf-8").\
+                read().strip().split("\n")
+    
+    pairs = [[s for s in l.split('/t')] for l in lines]
+
+    if reverse:
+        pairs = [list(reversed(p)) for p in pairs]
+        input_lang = Lang(lang2)
+        output_lang = Lang(lang1)
+    else:
+        input_lang = Lang(lang1)
+        output_lang = Lang(lang2)
+    return input_lang, output_lang, pairs
+    
+    
 
 def indexesFromSentence(vocab, sentence):
     """
@@ -55,3 +72,6 @@ def variableFromSentence(vocab, sentence):
         return result.cuda()
     else:
         return result
+
+def prepareData(lang1, lang2, reverse  = False):
+    input_lang, output_lang, pairs = readText(lang1, lang2, reverse)
