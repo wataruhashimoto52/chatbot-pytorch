@@ -76,7 +76,7 @@ $ python load_saved_model.py
 ```
 
 ## Results  
-![result](https://raw.githubusercontent.com/wataruhashimoto52/chatbot-pytorch/images/results.png)  
+![result](https://raw.githubusercontent.com/wataruhashimoto52/chatbot-pytorch/images/images/results.png)  
 
 ## Reference
 
