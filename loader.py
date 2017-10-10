@@ -21,6 +21,15 @@ def load_previous_model(encoder, decoder, checkpoint_dir, model_prefix):
 
 
 def save_model(encoder, decoder, checkpoint_dir, model_prefix, epoch, max_keep = 5):
+    """
+    params:
+        encoder: the encoder used for learning
+        decoder: the decoder used for learning
+        checkpoint_dir: directory where the model will save
+        model_prefix: 
+        epoch: epoch number
+        max_keep: How much model should be stored
+
     if not os.path.exists(checkpoint_dir):
         os.makedirs(checkpoint_dir)
     
